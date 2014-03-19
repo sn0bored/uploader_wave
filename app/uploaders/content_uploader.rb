@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class UpwaveUploader < CarrierWave::Uploader::Base
+class ContentUploader < CarrierWave::Uploader::Base
 
   storage :file
   
