@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 
 gem 'pg'
+gem 'carrierwave'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
