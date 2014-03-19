@@ -6,6 +6,9 @@ describe UploadFile do
 
 	before do
 		@upload_file = UploadFile.create
+		@dir = Rails.root
+  	@test_path = File.join(@dir, "spec/test.txt")
+  	@dup_path = File.join(@dir, "spec/test_dup.txt")
 	end
 
 	after do
@@ -23,16 +26,17 @@ describe UploadFile do
   end
 
   it "should uploaded a file" do
-  	dir = Rails.root
-  	test_path = File.join(dir, "spec/test.txt")
-  	@upload_file.content = File.open(test_path)
+  	@upload_file.content = File.open(@test_path)
   	@upload_file.save!
   	@upload_file.content.identifier.to_s.should eq ("test.txt")
   end
 
   it "should not upload a file if the a file with the exact contents exist" do
-  	#uploadfile
-  	#try again
+  	@upload_file.content = File.open(@test_path)
+  	@upload_file.save!
+  	@new_file = UploadFile.new
+  	@upload_file.content = File.open(@dup_path)
+  	@upload_file.save.should eq(false)
   end
 
 end
