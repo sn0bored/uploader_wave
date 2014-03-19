@@ -31,12 +31,13 @@ describe UploadFile do
   	@upload_file.content.identifier.to_s.should eq ("test.txt")
   end
 
-  it "should not upload a file if the a file with the exact contents exist" do
-  	@upload_file.content = File.open(@test_path)
-  	@upload_file.save!
+  it "#no_duplicates should return false if a duplicate file exists" do
   	@new_file = UploadFile.new
-  	@upload_file.content = File.open(@dup_path)
-  	@upload_file.save.should eq(false)
+  	@new_file.no_duplicates?(File.open(@dup_path)).should eq(true)
+  	@upload_file.content = File.open(@test_path)
+  	@upload_file.create_md5(File.open(@test_path))
+  	@upload_file.save!
+  	@new_file.no_duplicates?(File.open(@dup_path)).should eq(false)
   end
 
 end
