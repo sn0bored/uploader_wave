@@ -11,12 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140319195847) do
+ActiveRecord::Schema.define(:version => 20140319222449) do
 
   create_table "upload_files", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "content"
+    t.string   "md5"
   end
 
 end
