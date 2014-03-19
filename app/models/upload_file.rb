@@ -1,3 +1,4 @@
 class UploadFile < ActiveRecord::Base
-  # attr_accessible :title, :body
+	mount_uploader :content, UpwaveUploader
+  attr_accessible :content
 end
