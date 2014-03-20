@@ -9,10 +9,15 @@
 		<li>Have fun</li>
 	</ul>
 
+	<%= form_for :upload_file do |f| %>
+		<%= f.file_field :content %>
+		<%= f.submit %>
+	<%end%>
+
 	<h3>These are the files people have uploaded so far...</h3>
 
 	<% @uploaded_files.each do |up| %>
-		<%= link_to up.content.identifier, upload_file %>
+		<%= link_to up.content.identifier, upload_file_path(up.id) %>
 	<%end%>
 
 </div>
