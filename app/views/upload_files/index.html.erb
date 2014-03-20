@@ -1,4 +1,4 @@
-<div>
+<div class='container'>
 	<p>Code for this at <%=link_to "Github Repo", 'https://github.com/sn0bored/uploader_wave'%></p>
 
 	<h1>This is your home for free cloud storage.</h1>
@@ -12,7 +12,7 @@
 
 	<%= form_for :upload_file do |f| %>
 		<%= f.file_field :content %>
-		<%= f.submit%>
+		<%= f.submit 'Save File', :class => "btn btn-success" %>
 	<%end%>
 
 	<h3>These are the files people have uploaded so far...</h3>
@@ -20,7 +20,7 @@
 	<ol>
 		<% @uploaded_files.each do |up| %>
 			<li><%= link_to up.content, upload_file_path(up.id) %></li>
-			<%= button_to "Delete", up, :method => :delete, data: { confirm: "Are you sure?  This will remove the file." } %>
+			<%= button_to "Delete", up, :method => :delete, data: { confirm: "Are you sure?  This will remove the file." }, class: "btn btn-danger" %>
 		<%end%>	
 	</ol>
 
