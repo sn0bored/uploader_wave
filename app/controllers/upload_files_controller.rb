@@ -5,7 +5,11 @@ class UploadFilesController < ApplicationController
 	end
 
 	def show
-		@uploaded_file = UploadFile.find(params[:id])
+		@file = UploadFile.find(params[:id])
+  	send_file(@file.content.path,
+        :type => '*',
+        :disposition => 'attachment',
+        :url_based_filename => true)
 	end
 
 	def create
