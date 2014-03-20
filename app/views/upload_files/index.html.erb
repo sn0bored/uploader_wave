@@ -1,0 +1,18 @@
+<div>
+
+	<h1>This is your home for free cloud storage.</h1>
+
+	<h5>Here are the rules</h5>
+	<ul>
+		<li>No duplicate files...it is a waste of space</li>
+		<li>This is public folder.</li>
+		<li>Have fun</li>
+	</ul>
+
+	<h3>These are the files people have uploaded so far...</h3>
+
+	<% @uploaded_files.each do |up| %>
+		<%= link_to up.content.identifier, upload_file %>
+	<%end%>
+
+</div>
