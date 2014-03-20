@@ -11,3 +11,30 @@
  *= require_self
  *= require_tree .
  */
+
+
+.messagebox {
+	display: none;
+  position: relative;
+  width: 100%;
+  z-index: 4;
+	text-align:center;
+	color: #FFF;
+}
+.messagebox span {
+	display:block;
+	height: 24px;
+	line-height: 24px;	
+}
+.error {
+    background: rgb(226, 120, 124);
+}
+.success {
+    background: rgb(161, 204, 151);
+}
+.info {
+    background: rgb(116, 192, 218);
+}
+.warning {
+    background: rgb(226, 200, 141);
+}

@@ -5,13 +5,13 @@
 	<h5>Here are the rules</h5>
 	<ul>
 		<li>No duplicate files...it is a waste of space</li>
-		<li>This is public folder.</li>
+		<li>This is public folder...anyone can download or delete your stuff.</li>
 		<li>Have fun</li>
 	</ul>
 
 	<%= form_for :upload_file do |f| %>
 		<%= f.file_field :content %>
-		<%= f.submit %>
+		<%= f.submit%>
 	<%end%>
 
 	<h3>These are the files people have uploaded so far...</h3>
@@ -19,7 +19,7 @@
 	<ol>
 		<% @uploaded_files.each do |up| %>
 			<li><%= link_to up.content, upload_file_path(up.id) %></li>
-			<%= button_to "Delete", up, :method => :delete %>
+			<%= button_to "Delete", up, :method => :delete, data: { confirm: "Are you sure?  This will remove the file." } %>
 		<%end%>	
 	</ol>
 

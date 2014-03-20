@@ -20,8 +20,9 @@ class UploadFilesController < ApplicationController
 			new_file.content = params[:upload_file][:content]
 			new_file.create_md5(file)
 			new_file.save!
+			flash[:notice] = "Saved file.  Thanks for sharing!"   
 		else
-			puts "dupppppp   " * 100
+			flash[:alert] = "We said no duplicates.  I am paying for the space here."
 		end
 		redirect_to :back
 	end

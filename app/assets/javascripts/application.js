@@ -13,3 +13,24 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+(function($, window, document) {
+
+	$(function() {
+		messageBox();
+	});
+
+	var messageBox = function() {
+	  	var messageBox = $('.messagebox');
+		if ( messageBox.text() != "" ) {
+	    messageBox.slideDown();
+	 		$(function() {
+		    setTimeout(function() {
+	    	  $(".messagebox").slideUp(500);
+	   		}, 10000);
+	  	});
+	  }
+	};
+	
+}(window.jQuery, window, document));

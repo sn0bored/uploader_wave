@@ -9,7 +9,6 @@ class UploadFile < ActiveRecord::Base
 
   def create_md5(file)
   	self.md5 = Digest::SHA256.file(file).hexdigest
-  	self.save
   end
 
 end
