@@ -18,7 +18,8 @@
 	<h4>Click on any to download</h4>
 	<ol>
 		<% @uploaded_files.each do |up| %>
-			<li><%= link_to up.content.identifier, upload_file_path(up.id) %></ul>
+			<li><%= link_to up.content, upload_file_path(up.id) %></li>
+			<%= button_to "Delete", up, :method => :delete %>
 		<%end%>	
 	</ol>
 

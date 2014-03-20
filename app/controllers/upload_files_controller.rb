@@ -26,4 +26,10 @@ class UploadFilesController < ApplicationController
 		redirect_to :back
 	end
 
+	def destroy
+		@file = UploadFile.find(params[:id])
+		@file.delete
+		redirect_to :back
+	end	
+
 end
