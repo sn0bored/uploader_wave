@@ -13,16 +13,17 @@ class UploadFilesController < ApplicationController
 	end
 
 	def create
-		puts "in here  " * 100
-		file = params[:upload_file][:content].tempfile
-		new_file = UploadFile.new
-		if new_file.no_duplicates?(file)
-			new_file.content = params[:upload_file][:content]
-			new_file.create_md5(file)
-			new_file.save!
-			flash[:notice] = "Saved file.  Thanks for sharing!"   
-		else
-			flash[:alert] = "We said no duplicates.  I am paying for the space here."
+		if params[:upload_file]
+			file = params[:upload_file][:content].tempfile
+			new_file = UploadFile.new
+			if new_file.no_duplicates?(file)
+				new_file.content = params[:upload_file][:content]
+				new_file.create_md5(file)
+				new_file.save!
+				flash[:notice] = "Saved file.  Thanks for sharing!"   
+			else
+				flash[:alert] = "We said no duplicates.  I am paying for the space here."
+			end
 		end
 		redirect_to :back
 	end
